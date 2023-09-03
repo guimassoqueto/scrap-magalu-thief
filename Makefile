@@ -11,3 +11,6 @@ env:
 
 a:
 	poetry run python main.py
+	
+or:
+	open https://github.com/guimassoqueto/scrap-magalu-thief
