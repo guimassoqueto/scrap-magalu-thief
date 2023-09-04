@@ -1,7 +1,8 @@
-from app.selectolax.magalu_item import Item
+from app.infra.selectolax.magalu_item import Item
 from selectolax.parser import HTMLParser
 from urllib.parse import urljoin
 import re
+
 
 class MagaluItemParser:
   def __init__(self, url: str, html_content: str) -> None:

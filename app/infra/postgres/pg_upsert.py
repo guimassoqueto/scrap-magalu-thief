@@ -36,3 +36,12 @@ class PostgresDB:
             with conn.cursor() as cur:
                 cur.execute(upsert_query(item))
                 conn.commit()
+
+
+class AsyncPostgresDB:
+    @staticmethod
+    async def upsert_item(item: dict) -> None:
+        conninfo = f"dbname={POSTGRES_DB} user={POSTGRES_USER} password={POSTGRES_PASSWORD} host={POSTGRES_HOST} port={POSTGRES_PORT}"
+        async with await psycopg.AsyncConnection.connect(conninfo) as aconn:
+            async with aconn.cursor() as cur:
+                await cur.execute(upsert_query(item))

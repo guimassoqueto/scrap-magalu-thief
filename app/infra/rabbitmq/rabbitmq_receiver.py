@@ -27,12 +27,12 @@ class RabbitMqReceiver:
     credentials = PlainCredentials(RABBITMQ_DEFAULT_USER, RABBITMQ_DEFAULT_PASS)
     connection = BlockingConnection(ConnectionParameters(RABBITMQ_DEFAULT_HOST, credentials=credentials))
     channel = connection.channel()
-    channel.queue_declare(RABBITMQ_RECEIVER_QUEUE)
+    channel.queue_declare(RABBITMQ_RECEIVER_QUEUE, durable=False)
 
     # consumer
     channel.basic_consume(
       queue=RABBITMQ_RECEIVER_QUEUE,
-      auto_ack=True,
+      auto_ack=False,
       on_message_callback=callback
     )
 

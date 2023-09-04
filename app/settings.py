@@ -13,3 +13,4 @@ POSTGRES_HOST = getenv("POSTGRES_HOST") or "localhost"
 POSTGRES_DB = getenv("POSTGRES_DB") or "postgres"
 POSTGRES_USER = getenv("POSTGRES_USER") or "postgres"
 POSTGRES_PASSWORD = getenv("POSTGRES_PASSWORD") or "password"
+MAX_CONCURRENCY = int(getenv("MAX_CONCURRENCY") or "8") 
