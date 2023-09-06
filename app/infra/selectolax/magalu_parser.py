@@ -11,7 +11,7 @@ class MagaluItemParser:
   
   def get_item(self) -> dict:
     try:
-      id = self.__get_id()
+      product_url = self.__get_product_url()
       category = self.__get_category()
       title = self.__get_title()
       reviews = self.__get_reviews()
@@ -21,7 +21,7 @@ class MagaluItemParser:
       previous_price = self.__get_previous_price()
       discount = self.__get_discount(price, previous_price)
       item = Item(
-        id=id,
+        product_url=product_url,
         title=title,
         category=category,
         reviews=reviews,
@@ -35,7 +35,7 @@ class MagaluItemParser:
     except Exception as e:
       print(e)
 
-  def __get_id(self) -> str:
+  def __get_product_url(self) -> str:
     if 'magazineluiza.com.br' in self.url: return self.url
     match = re.search(".com.br/[a-zAZ0-9-]+/(.+)", self.url)
     return urljoin("https://magazineluiza.com.br/", match.group(1))

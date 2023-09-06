@@ -11,7 +11,7 @@ from app.settings import (
 def upsert_query(item: dict) -> str:
     insert = f"INSERT INTO items("
     values = "VALUES("
-    on_conflict = "ON CONFLICT (id)\nDO UPDATE SET "
+    on_conflict = "ON CONFLICT (product_url)\nDO UPDATE SET "
     for key, value in item.items():
         insert += f"{key},"
 
